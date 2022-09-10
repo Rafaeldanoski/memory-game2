@@ -44,7 +44,7 @@ export default function App() {
         </div>
       </div>
       <style jsx global>
-  {`
+        {`
     body {
       text-align: center;
       font-family: -apple-system, sans-serif;
@@ -111,7 +111,7 @@ export default function App() {
       background-image: url(https://images.unsplash.com/photo-1540206395-68808572332f?ixlib=rb-1.2.1&w=1181&q=80&auto=format&fit=crop);
     }
   `}
-</style>
+      </style>
 
       {options ? (
         <MemoryGame
@@ -127,7 +127,7 @@ export default function App() {
   )
 }
 
-function MemoryGame({options, setOptions, highScore, setHighScore}) {
+function MemoryGame({ options, setOptions, highScore, setHighScore }) {
   const [game, setGame] = useState([])
   const [flippedCount, setFlippedCount] = useState(0)
   const [flippedIndexes, setFlippedIndexes] = useState([])
@@ -173,7 +173,7 @@ function MemoryGame({options, setOptions, highScore, setHighScore}) {
       setTimeout(() => {
         const bestPossible = game.length
         let multiplier
-  
+
         if (options === 6) {
           multiplier = 5
         } else if (options === 10) {
@@ -181,22 +181,22 @@ function MemoryGame({options, setOptions, highScore, setHighScore}) {
         } else if (options === 16) {
           multiplier = 1
         }
-  
+
         const pointsLost = multiplier * (0.66 * flippedCount - bestPossible)
-  
+
         let score
         if (pointsLost < 100) {
           score = 100 - pointsLost
         } else {
           score = 0
         }
-  
+
         if (score > highScore) {
           setHighScore(score)
           const json = JSON.stringify(score)
           localStorage.setItem('memorygamehighscore', json)
         }
-  
+
         const newGame = confirm('Você ganhou! Pontuação: ' + score + '! Novo Jogo?')
         if (newGame) {
           const gameLength = game.length
@@ -213,13 +213,13 @@ function MemoryGame({options, setOptions, highScore, setHighScore}) {
 
   if (flippedIndexes.length === 2) {
     const match = game[flippedIndexes[0]].colorId === game[flippedIndexes[1]].colorId
-  
+
     if (match) {
       const newGame = [...game]
       newGame[flippedIndexes[0]].flipped = true
       newGame[flippedIndexes[1]].flipped = true
       setGame(newGame)
-  
+
       const newIndexes = [...flippedIndexes]
       newIndexes.push(false)
       setFlippedIndexes(newIndexes)
@@ -262,10 +262,10 @@ function Card({
   setFlippedIndexes,
 }) {
   const [flipped, set] = useState(false)
-  const {transform, opacity} = useSpring({
+  const { transform, opacity } = useSpring({
     opacity: flipped ? 1 : 0,
     transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
-    config: {mass: 5, tension: 500, friction: 80},
+    config: { mass: 5, tension: 500, friction: 80 },
   })
 
   useEffect(() => {
