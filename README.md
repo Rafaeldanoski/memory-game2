@@ -1,8 +1,14 @@
 Este é um projeto acadêmico com intuito de criar um simples jogo da memória com reactjs.
 
+## Instalando dependências
+
+```bash
+npm install
+```
+
 ## Iniciando o Projeto
 
-Primeiro, rode o seguinte comando:
+Rode o seguinte comando:
 
 ```bash
 npm run dev
